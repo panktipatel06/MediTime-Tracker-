@@ -5,17 +5,35 @@
 	    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 	</head>
 	<body>
-	    <form method="POST">
-	        <h2>Login</h2>
-	        {% with messages = get_flashed_messages() %}
-	            {% if messages %}
-	                <p>{{ messages[0] }}</p>
-	            {% endif %}
-	        {% endwith %}
-	        <input type="text" name="username" placeholder="Username" required>
-	        <input type="password" name="password" placeholder="Password" required>
-	        <input type="submit" value="Login">
-	    </form>
+		<div class="login-container">
+			<div class="logo-container">
+				<img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+
+			</div>
+			<form method="POST" class="login-form">
+				<h2>LOGIN</h2>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						<p class="error-message">{{ messages[0] }}</p>
+					{% endif %}
+				{% endwith %}
+				<div class="input-group">
+					<span class="input-icon user-icon"></span>
+					<input type="text" name="username" placeholder="USERNAME" required>
+				</div>
+				<div class="input-group">
+					<span class="input-icon lock-icon"></span>
+					<input type="password" name="password" placeholder="PASSWORD" required>
+				</div>
+				<button type="submit" class="login-button">LOGIN</button>
+				<div class="forgot-password-link">
+					<a href="{{ url_for('forgot_password') }}">Forgot password?</a>
+				</div>
+				<div class="register-link" style="margin-top:10px;text-align:center;">
+					New user? <a href="{{ url_for('register') }}">Register</a>
+				</div>
+			</form>
+		</div>
 	</body>
 	</html>
 	 

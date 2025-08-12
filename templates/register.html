@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-left">
+            <h1 class="register-title">Welcome to MediTime!</h1>
+            <p class="register-subtitle">Create an account to run wild through our curated experiences.</p>
+            <form method="POST" class="register-form">
+                <button type="button" class="google-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google" class="google-icon"> Continue with Google
+                </button>
+                <div class="register-or">or</div>
+                <div class="input-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="register-button">Create Account</button>
+                <div class="register-options">
+                    <label><input type="checkbox" name="remember"> Remember me for 30 days</label>
+                </div>
+                <div class="register-links">
+                    <a href="{{ url_for('forgot_password') }}" class="forgot-link">Forgot Password?</a>
+                </div>
+                <div class="register-login">
+                    You already have account? <a href="{{ url_for('login') }}">Log in</a>
+                </div>
+            </form>
+        </div>
+        <div class="register-right">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="register-logo">
+            <div class="register-tagline">NEVER MISS A DOSE AGAIN</div>
+        </div>
+    </div>
+</body>
+</html>
