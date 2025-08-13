@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medication Logging | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="medlog-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+        </div>
+        <h1 class="medlog-title">MEDICATION LOGGING</h1>
+        <form method="POST" class="medlog-form">
+            <label for="medication">Selecting the medication</label>
+            <select id="medication" name="medication">
+                {% for med in meds %}
+                <option value="{{ med['medicationID'] }}">{{ med['MedicationName'] }} ({{ med['DosageAmount'] }})</option>
+                {% endfor %}
+            </select>
+            <label>Was the medication taken?</label>
+            <div class="medlog-status">
+                <input type="radio" id="taken" name="status" value="Taken" required><label for="taken">Taken</label>
+                <input type="radio" id="missed" name="status" value="Missed"><label for="missed">Missed</label>
+                <input type="radio" id="delayed" name="status" value="Delayed"><label for="delayed">Delayed</label>
+            </div>
+            <label for="notes">Notes (optional)</label>
+            <input type="text" id="notes" name="notes" placeholder="Notes">
+            <button type="submit" class="medlog-button">Save entry</button>
+        </form>
+        <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+</body>
+</html>

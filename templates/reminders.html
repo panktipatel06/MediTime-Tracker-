@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reminders | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="reminders-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+        </div>
+        <h1 class="reminders-title">REMINDERS</h1>
+        <p class="reminders-subtitle">Please provide reminder notification preferences:</p>
+        <form method="POST" class="reminders-form">
+            <label><input type="checkbox" name="enable_reminders"> Please provide reminder notification preferences.</label>
+            <label for="notification_type">Notification type</label>
+            <select id="notification_type" name="notification_type">
+                <option value="local">Local notification</option>
+                <option value="email">Email</option>
+                <option value="text">Text message</option>
+                <option value="push">Push notification</option>
+            </select>
+            <button type="submit" class="reminders-button">Set notifications</button>
+        </form>
+        <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+</body>
+</html>

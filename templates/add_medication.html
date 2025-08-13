@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Medication | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="medication-container">
+        <h1 class="medication-title">ADD MEDICATION</h1>
+        <p class="medication-subtitle">Please provide the medication details.</p>
+        <form method="POST" class="medication-form">
+            <label for="medication_name">Medication name</label>
+            <input type="text" id="medication_name" name="medication_name" placeholder="Aspirin" required>
+
+            <label for="dosage">Dosage</label>
+            <input type="text" id="dosage" name="dosage" placeholder="50 mg" required>
+
+            <label for="timing">Timing</label>
+            <select id="timing" name="timing" multiple required>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <option value="Once daily">Once daily</option>
+                <option value="Twice daily">Twice daily</option>
+                <option value="Three times daily">Three times daily</option>
+            </select>
+
+            <button type="submit" class="medication-button">Add Medication</button>
+        </form>
+    </div>
+</body>
+</html>

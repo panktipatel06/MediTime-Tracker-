@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="admin-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+        </div>
+        <h1 class="admin-title">Admin Panel</h1>
+        <table class="admin-table">
+            <thead>
+                <tr><th>Username</th><th>Email</th><th>Status</th><th>Actions</th></tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user['Username'] }}</td>
+                    <td>{{ user['Email'] }}</td>
+                    <td>{{ 'Active' if user['reminderStatus'] else 'Inactive' }}</td>
+                    <td>
+                        {% if user['Role'] != 'Admin' %}
+                        <form method="POST" action="{{ url_for('admin_toggle', user_id=user['userID']) }}" style="display:inline;">
+                            <button type="submit" class="admin-action">{{ 'Deactivate' if user['reminderStatus'] else 'Activate' }}</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('admin_reset_password', user_id=user['userID']) }}" style="display:inline;">
+                            <button type="submit" class="admin-action">Reset Password</button>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+</body>
+</html>

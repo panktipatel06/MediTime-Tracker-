@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Generation Report | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="healthreport-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+        </div>
+        <h1 class="healthreport-title">HEALTH GENERATION REPORT</h1>
+        <p class="healthreport-subtitle">Users can track trends and any missed doses</p>
+        <form method="GET" class="healthreport-form">
+            <button type="submit" class="healthreport-button">Generate report</button>
+        </form>
+        <div class="healthreport-graph">
+            <h2>Missed Doses: {{ missed_count }} / {{ total_count }}</h2>
+            <ul>
+                {% for log in missed_logs %}
+                <li>{{ log['logTime'] }} - Medication ID: {{ log['medicationID'] }} - Status: {{ log['status'] }} - Notes: {{ log['notes'] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="back-button">Back to Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="logout-button">Logout</a>
+    </div>
+</body>
+</html>

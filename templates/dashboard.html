@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | MediTime</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="MediTime Logo" class="logo">
+        </div>
+        <h1 class="dashboard-title">Welcome, {{ session['username'] }}!</h1>
+        <div class="dashboard-menu">
+            <a href="{{ url_for('add_medication') }}" class="dashboard-link">Add Medication</a>
+            <a href="{{ url_for('health_report') }}" class="dashboard-link">Health Report Generation</a>
+            <a href="{{ url_for('medication_logging') }}" class="dashboard-link">Medication Log</a>
+            <a href="{{ url_for('reminders') }}" class="dashboard-link">Reminders</a>
+            <a href="{{ url_for('caregiver') }}" class="dashboard-link">Caregiver/Family</a>
+            <a href="{{ url_for('logout') }}" class="dashboard-link">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

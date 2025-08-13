@@ -1,6 +1,6 @@
 body {
     font-family: 'Playfair Display', serif;
-    background: #f7f5f0;
+    background: linear-gradient(135deg, #f7f5f0 60%, #f3e7d3 100%);
     min-height: 100vh;
     margin: 0;
     display: flex;
@@ -106,25 +106,28 @@ h2 {
 }
 
 input[type="text"],
+input[type="email"],
 input[type="password"] {
     width: 100%;
     padding: 12px 14px;
-    border: 1px solid #bbaaaa;
+    border: 1.5px solid #bbaaaa;
     border-radius: 7px;
     font-family: 'Playfair Display', serif;
     font-size: 16px;
     color: #5a3a3a;
     letter-spacing: 1px;
-    text-transform: uppercase;
     background: #f7f5f0;
     outline: none;
     transition: border-color 0.2s;
+    text-transform: none;
 }
 
 input[type="text"]::placeholder,
+input[type="email"]::placeholder,
 input[type="password"]::placeholder {
     color: #5a3a3a;
     opacity: 0.7;
+    text-transform: none;
 }
 
 .login-button {
@@ -193,6 +196,7 @@ input[type="password"]::placeholder {
         margin-right: 6px;
     }
     input[type="text"],
+    input[type="email"],
     input[type="password"] {
         font-size: 14px;
         padding: 10px 8px;
@@ -456,4 +460,175 @@ p.error-message {
     .register-tagline {
         font-size: 1rem;
     }
+}
+
+.medication-container {
+    background: #f7f5f0;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 32px 28px 28px 28px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.07);
+    text-align: center;
+}
+.medication-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #a94442;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+.medication-subtitle {
+    font-size: 1.1rem;
+    color: #5a3a3a;
+    margin-bottom: 24px;
+}
+.medication-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+}
+.medication-form label {
+    text-align: left;
+    font-size: 1rem;
+    color: #5a3a3a;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+.medication-form input[type="text"] {
+    padding: 12px 14px;
+    border: 2px solid #bbaaaa;
+    border-radius: 7px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #5a3a3a;
+    background: #f7f5f0;
+    outline: none;
+    margin-bottom: 0;
+}
+.medication-form select {
+    padding: 12px 14px;
+    border: 2px solid #bbaaaa;
+    border-radius: 7px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: #5a3a3a;
+    background: #f7f5f0;
+    outline: none;
+    margin-bottom: 0;
+}
+.medication-button {
+    width: 100%;
+    background-color: #a94442;
+    color: #fff;
+    padding: 14px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 18px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+.medication-button:hover {
+    background-color: #7a5555;
+}
+@media (max-width: 600px) {
+    .medication-container {
+        max-width: 98vw;
+        margin: 10px auto;
+        padding: 10vw 2vw 8vw 2vw;
+        border-radius: 10px;
+    }
+    .medication-title {
+        font-size: 1.3rem;
+    }
+    .medication-form {
+        gap: 12px;
+    }
+    .medication-form input[type="text"],
+    .medication-form select {
+        font-size: 14px;
+        padding: 10px 8px;
+    }
+    .medication-button {
+        font-size: 15px;
+        padding: 12px;
+    }
+}
+
+.dashboard-container {
+    background: #f7f5f0;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 32px 28px 28px 28px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.07);
+    text-align: center;
+}
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #a94442;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+}
+.dashboard-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+    margin-top: 32px;
+}
+.dashboard-link {
+    background: #a94442;
+    color: #fff;
+    padding: 48px;
+    border-radius: 18px;
+    font-size: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.dashboard-link:hover {
+    background: #7a5555;
+}
+@media (max-width: 900px) {
+    .dashboard-menu {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .dashboard-link {
+        font-size: 1.2rem;
+        padding: 24px;
+    }
+}
+
+.back-button, .logout-button {
+    display: inline-block;
+    margin: 18px 12px 0 0;
+    padding: 12px 32px;
+    background: #a94442;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+.back-button:hover, .logout-button:hover {
+    background: #7a5555;
 }
